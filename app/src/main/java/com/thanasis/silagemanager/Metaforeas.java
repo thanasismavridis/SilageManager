@@ -1,16 +1,21 @@
 package com.thanasis.silagemanager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Metaforeas extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,33 @@ public class Metaforeas extends AppCompatActivity {
             }
         });
 
-        //textView2 = (TextView) findViewById(R.id.textView2);
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+                databaseAccess.open();
+                Cursor res = databaseAccess.getDataMetaforeas();
+                if(res.getCount()==0){
+                    Toast.makeText(Metaforeas.this, "ΚΑΜΙΑ ΕΓΓΡΑΦΗ", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                while(res.moveToNext()){
+                    buffer.append("Όνομα: " +res.getString(0)+"\n");
+                    buffer.append("Επίθετο: " +res.getString(1)+"\n");
+                    buffer.append("Αριθμός Κυκλογορίας: " +res.getString(2)+"\n\n\n\n");
+                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Metaforeas.this);
+                builder.setCancelable(true);
+                builder.setTitle("ΜΕΤΑΦΟΡΕΙΣ");
+                builder.setMessage(buffer.toString());
+                builder.show();
+                databaseAccess.close();
+            }
+        });
     }
 
 

@@ -45,6 +45,23 @@ public class DatabaseAccess {
         return buffer.toString();
     }
 
+    //-----------------------------VIEW FUNCTIONS------------------------------------------------------
+
+    public Cursor getDataParagogos(){
+        Cursor cursor = db.rawQuery("SELECT * FROM paragogos", null);
+        return cursor;
+    }
+
+    public Cursor getDataMetaforeas(){
+        Cursor cursor = db.rawQuery("SELECT * FROM metaforeas", null);
+        return cursor;
+    }
+
+    public Cursor getDataKtinotrofos(){
+        Cursor cursor = db.rawQuery("SELECT * FROM ktinotrofos", null);
+        return cursor;
+    }
+
     //-----------------------------INSERT FUNCTIONS----------------------------------------------------
 
     public Boolean insertparagogos(String onoma, String epitheto){

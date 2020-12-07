@@ -1,14 +1,17 @@
 package com.thanasis.silagemanager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Paragogos extends AppCompatActivity {
@@ -34,9 +37,27 @@ public class Paragogos extends AppCompatActivity {
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Paragogos.this, ViewParagogos.class);
-                startActivity(intent);
+                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+                databaseAccess.open();
+                Cursor res = databaseAccess.getDataParagogos();
+                if(res.getCount()==0){
+                    Toast.makeText(Paragogos.this, "ΚΑΜΙΑ ΕΓΓΡΑΦΗ", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                while(res.moveToNext()){
+                    buffer.append("Όνομα: " +res.getString(1)+"\n");
+                    buffer.append("Επίθετο: " +res.getString(2)+"\n\n\n\n");
+                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Paragogos.this);
+                builder.setCancelable(true);
+                builder.setTitle("ΠΑΡΑΓΩΓΟΙ");
+                builder.setMessage(buffer.toString());
+                builder.show();
+                databaseAccess.close();
             }
+
         });
     }
 
