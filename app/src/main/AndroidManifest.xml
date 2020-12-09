@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SilageManager">
-        <activity android:name=".InsertMetaforeas"></activity>
+        <activity android:name=".DeleteMetaforeas"></activity>
+        <activity android:name=".DeleteKtinotrofos" />
+        <activity android:name=".DeleteParagogos" />
+        <activity android:name=".InsertMetaforeas" />
         <activity android:name=".Metaforeas" />
         <activity android:name=".Ktinotrofos" />
         <activity android:name=".InsertKtinotrofos" />

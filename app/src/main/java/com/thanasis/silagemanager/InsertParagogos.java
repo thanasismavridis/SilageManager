@@ -2,6 +2,7 @@ package com.thanasis.silagemanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,8 @@ public class InsertParagogos extends AppCompatActivity {
 
         namepar_txt = (TextView) findViewById(R.id.namepar_txt);
         surnamepar_txt = (TextView) findViewById(R.id.surnamepar_txt);
+        namepar_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        surnamepar_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         insert_btn = (Button) findViewById(R.id.insert_btn);
 
         insert_btn.setOnClickListener(new View.OnClickListener() {
@@ -36,14 +39,19 @@ public class InsertParagogos extends AppCompatActivity {
                 String onoma = namepar_txt.getText().toString();
                 String epitheto = surnamepar_txt.getText().toString();
 
-                Boolean checkinsert = databaseAccess.insertparagogos(onoma, epitheto);
-                if(checkinsert==true){
-                    Toast.makeText(InsertParagogos.this, "ΚΑΤΑΧΩΡΗΘΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(InsertParagogos.this, "Η ΚΑΤΑΧΩΡΗΣΗ ΑΠΕΤΥΧΕ", Toast.LENGTH_LONG).show();
-                }
+                if(onoma.matches("") || epitheto.matches("")){
+                    Toast.makeText(InsertParagogos.this, "ΣΥΜΠΛΗΡΩΣΤΕ ΟΛΑ ΤΑ ΠΕΔΙΑ", Toast.LENGTH_LONG).show();
+                }else {
 
-                databaseAccess.close();
+                    Boolean checkinsert = databaseAccess.insertparagogos(onoma, epitheto);
+                    if (checkinsert == true) {
+                        Toast.makeText(InsertParagogos.this, "ΚΑΤΑΧΩΡΗΘΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(InsertParagogos.this, "Η ΚΑΤΑΧΩΡΗΣΗ ΑΠΕΤΥΧΕ", Toast.LENGTH_LONG).show();
+                    }
+
+                    databaseAccess.close();
+                }
             }
         });
     }

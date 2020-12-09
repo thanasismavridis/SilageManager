@@ -100,4 +100,47 @@ public class DatabaseAccess {
             return true;
         }
     }
+
+    //-----------------------------DELETE FUNCTIONS----------------------------------------------------
+    public Boolean deleteparagogos (String epitheto){
+        Cursor cursor = db.rawQuery("SELECT * FROM paragogos WHERE epitheto = ?", new String[]{epitheto});
+        if(cursor.getCount()>0){
+            long result = db.delete("paragogos", "epitheto=?", new String[]{epitheto});
+            if (result == -1){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean deletektinotrofos (String epitheto){
+        Cursor cursor = db.rawQuery("SELECT * FROM ktinotrofos WHERE epitheto = ?", new String[]{epitheto});
+        if(cursor.getCount()>0){
+            long result = db.delete("ktinotrofos", "epitheto=?", new String[]{epitheto});
+            if (result == -1){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean deletemetaforeas (String epitheto){
+        Cursor cursor = db.rawQuery("SELECT * FROM metaforeas WHERE epitheto = ?", new String[]{epitheto});
+        if(cursor.getCount()>0){
+            long result = db.delete("metaforeas", "epitheto=?", new String[]{epitheto});
+            if (result == -1){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
 }

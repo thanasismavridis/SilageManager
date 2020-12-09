@@ -31,6 +31,15 @@ public class Ktinotrofos extends AppCompatActivity {
             }
         });
 
+        Button diagrafi_btn = (Button) findViewById(R.id.diagrafi_btn);
+        diagrafi_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Ktinotrofos.this, DeleteKtinotrofos.class);
+                startActivity(intent);
+            }
+        });
+
         textView2 = (TextView) findViewById(R.id.textView2);
 
         textView2.setOnClickListener(new View.OnClickListener() {

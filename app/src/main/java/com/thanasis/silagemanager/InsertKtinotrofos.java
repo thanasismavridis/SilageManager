@@ -2,6 +2,7 @@ package com.thanasis.silagemanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,9 @@ public class InsertKtinotrofos extends AppCompatActivity {
 
         namektin_txt = (TextView) findViewById(R.id.namemet_txt);
         surnamektin_txt = (TextView) findViewById(R.id.surnamemet_txt);
+        namektin_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        surnamektin_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+
         insert_btn = (Button) findViewById(R.id.insert_btn);
 
         insert_btn.setOnClickListener(new View.OnClickListener() {
@@ -34,15 +38,19 @@ public class InsertKtinotrofos extends AppCompatActivity {
 
                 String onoma = namektin_txt.getText().toString();
                 String epitheto = surnamektin_txt.getText().toString();
+                if(onoma.matches("") || epitheto.matches("")){
+                    Toast.makeText(InsertKtinotrofos.this, "ΣΥΜΠΛΗΡΩΣΤΕ ΟΛΑ ΤΑ ΠΕΔΙΑ", Toast.LENGTH_LONG).show();
+                }else {
 
-                Boolean checkinsert = databaseAccess.insertktinotrofos(onoma, epitheto);
-                if(checkinsert==true){
-                    Toast.makeText(InsertKtinotrofos.this, "ΚΑΤΑΧΩΡΗΘΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(InsertKtinotrofos.this, "Η ΚΑΤΑΧΩΡΗΣΗ ΑΠΕΤΥΧΕ", Toast.LENGTH_LONG).show();
+                    Boolean checkinsert = databaseAccess.insertktinotrofos(onoma, epitheto);
+                    if (checkinsert == true) {
+                        Toast.makeText(InsertKtinotrofos.this, "ΚΑΤΑΧΩΡΗΘΗΚΕ ΜΕ ΕΠΙΤΥΧΙΑ", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(InsertKtinotrofos.this, "Η ΚΑΤΑΧΩΡΗΣΗ ΑΠΕΤΥΧΕ", Toast.LENGTH_LONG).show();
+                    }
+
+                    databaseAccess.close();
                 }
-
-                databaseAccess.close();
             }
         });
     }

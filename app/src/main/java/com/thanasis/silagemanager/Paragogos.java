@@ -32,6 +32,16 @@ public class Paragogos extends AppCompatActivity {
             }
         });
 
+        Button delete_btn = (Button) findViewById(R.id.diagrafi_btn);
+        delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentdelete = new Intent(Paragogos.this, DeleteParagogos.class);
+                startActivity(intentdelete);
+            }
+        });
+
+
         textView2 = (TextView) findViewById(R.id.textView2);
 
         textView2.setOnClickListener(new View.OnClickListener() {
