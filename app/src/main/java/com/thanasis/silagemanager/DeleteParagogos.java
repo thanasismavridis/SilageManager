@@ -1,17 +1,24 @@
 package com.thanasis.silagemanager;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class DeleteParagogos extends AppCompatActivity {
 
@@ -20,8 +27,36 @@ public class DeleteParagogos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_paragogos);
         TextView surnamepar_txt = (TextView) findViewById(R.id.surnamepar_txt);
-        surnamepar_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        TextView namepar_txt = (TextView) findViewById(R.id.namepar_txt);
+        disableEditText((EditText) surnamepar_txt);
+        disableEditText((EditText) namepar_txt);
         Button delete_btn = (Button) findViewById(R.id.delete_btn);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+        databaseAccess.open();
+        ArrayList<String> listpar = databaseAccess.getsurname("paragogos");
+        Spinner sp = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout, R.id.txt, listpar);
+        sp.setAdapter(adapter);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String epitheto = parent.getItemAtPosition(position).toString();
+
+                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+                databaseAccess.open();
+                Cursor res = databaseAccess.getDataSurname("paragogos", epitheto);
+                while(res.moveToNext()){
+                    namepar_txt.setText(res.getString(1));
+                    surnamepar_txt.setText(res.getString(2));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,5 +105,13 @@ public class DeleteParagogos extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void disableEditText(EditText editText) {
+        editText.setFocusable(false);
+        editText.setEnabled(false);
+        editText.setCursorVisible(false);
+        editText.setKeyListener(null);
+        editText.setBackgroundColor(Color.TRANSPARENT);
     }
 }
