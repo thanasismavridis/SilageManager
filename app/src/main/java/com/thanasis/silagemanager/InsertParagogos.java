@@ -81,6 +81,10 @@ public class InsertParagogos extends AppCompatActivity {
         if(id== R.id.menu_ktinotrofos){
             Intent intent = new Intent(InsertParagogos.this, Ktinotrofos.class);
             startActivity(intent);
+        }else
+        if(id==R.id.menu_metaforeas){
+            Intent intent = new Intent(InsertParagogos.this, Metaforeas.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

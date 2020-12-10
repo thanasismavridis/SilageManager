@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,17 +29,17 @@ public class ViewParagogos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-                if(databaseAccess!=null){
-                databaseAccess.open();}
-
-                String n= onomaparagogos_txt.getText().toString();
-                String finalepitheto = databaseAccess.getEpitheto(n);
-                textView5.setText(finalepitheto);
-
-                Toast.makeText(ViewParagogos.this, databaseAccess.getEpitheto(n),Toast.LENGTH_LONG).show();
-
-                databaseAccess.close();
+//                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+//                if(databaseAccess!=null){
+//                databaseAccess.open();}
+//
+//                String n= onomaparagogos_txt.getText().toString();
+//                String finalepitheto = databaseAccess.getEpitheto(n);
+//                textView5.setText(finalepitheto);
+//
+//                Toast.makeText(ViewParagogos.this, databaseAccess.getEpitheto(n),Toast.LENGTH_LONG).show();
+//
+//                databaseAccess.close();
             }
         });
     }

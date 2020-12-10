@@ -31,6 +31,15 @@ public class Ktinotrofos extends AppCompatActivity {
             }
         });
 
+        Button enimerosi_btn = (Button) findViewById(R.id.enimerosi_btn);
+        enimerosi_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Ktinotrofos.this, UpdateKtinotrofos.class);
+                startActivity(intent);
+            }
+        });
+
         Button diagrafi_btn = (Button) findViewById(R.id.diagrafi_btn);
         diagrafi_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +56,7 @@ public class Ktinotrofos extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
                 databaseAccess.open();
-                Cursor res = databaseAccess.getDataKtinotrofos();
+                Cursor res = databaseAccess.getData("ktinotrofos");
                 if(res.getCount()==0){
                     Toast.makeText(Ktinotrofos.this, "ΚΑΜΙΑ ΕΓΓΡΑΦΗ", Toast.LENGTH_LONG).show();
                     return;

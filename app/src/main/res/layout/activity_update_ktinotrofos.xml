@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateParagogos">
+    tools:context=".UpdateKtinotrofos">
 
     <TextView
         android:id="@+id/textView4"
@@ -13,7 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:text="ΕΝΗΜΕΡΩΣΗ ΠΑΡΑΓΩΓΟΥ"
+        android:text="ΕΝΗΜΕΡΩΣΗ ΚΤΗΝΟΤΡΟΦΟΥ"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/namepar_txt"
+        android:id="@+id/namektin_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
-        android:id="@+id/surnamepar_txt"
+        android:id="@+id/surnamektin_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namepar_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/namektin_txt" />
 
     <Button
         android:id="@+id/update_btn"
@@ -67,6 +67,6 @@
         android:text="ΕΝΗΜΕΡΩΣΗ"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surnamepar_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/surnamektin_txt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

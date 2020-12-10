@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
@@ -33,34 +35,23 @@ public class DatabaseAccess {
         }
     }
 
-    public String getEpitheto(String name){
-        c = db.rawQuery("SELECT * FROM paragogos WHERE onoma = '"+name+"'", new String[]{});
-        StringBuffer buffer = new StringBuffer();
-        while(c.moveToNext()){
-            String epitheto1 = c.getString(2);
-            String id = c.getString(0);
-            buffer.append(""+epitheto1+""+ id);
 
-        }
-        return buffer.toString();
-    }
 
     //-----------------------------VIEW FUNCTIONS------------------------------------------------------
 
-    public Cursor getDataParagogos(){
-        Cursor cursor = db.rawQuery("SELECT * FROM paragogos", null);
+    public Cursor getData(String ontotita){
+        Cursor cursor = db.rawQuery("SELECT * FROM '"+ontotita+"'", null);
         return cursor;
     }
 
-    public Cursor getDataMetaforeas(){
-        Cursor cursor = db.rawQuery("SELECT * FROM metaforeas", null);
+    public Cursor getDataSurname(String table, String surname){
+        Cursor cursor = db.rawQuery("SELECT * FROM '"+table+"' WHERE epitheto = '"+surname+"'" , null);
         return cursor;
     }
 
-    public Cursor getDataKtinotrofos(){
-        Cursor cursor = db.rawQuery("SELECT * FROM ktinotrofos", null);
-        return cursor;
-    }
+
+
+
 
     //-----------------------------INSERT FUNCTIONS----------------------------------------------------
 
@@ -100,6 +91,66 @@ public class DatabaseAccess {
             return true;
         }
     }
+
+
+    //-----------------------------UPDATE FUNCTIONS----------------------------------------------------
+
+    public Boolean updateparagogos(String onoma, String epitheto){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("onoma", onoma);
+        //contentValues.put("epitheto", epitheto);
+        Cursor cursor = db.rawQuery("SELECT * FROM paragogos WHERE epitheto = ?", new String[]{epitheto});
+        if(cursor.getCount() > 0){
+            long result = db.update("paragogos", contentValues, "epitheto=?", new String[] {epitheto});
+            if(result==-1){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean updatektinotrofos(String onoma, String epitheto){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("onoma", onoma);
+        //contentValues.put("epitheto", epitheto);
+        Cursor cursor = db.rawQuery("SELECT * FROM ktinotrofos WHERE epitheto = ?", new String[]{epitheto});
+        if(cursor.getCount() > 0){
+            long result = db.update("ktinotrofos", contentValues, "epitheto=?", new String[] {epitheto});
+            if(result==-1){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean updatemetaforeas(String onoma, String epitheto){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("onoma", onoma);
+        //contentValues.put("epitheto", epitheto);
+        Cursor cursor = db.rawQuery("SELECT * FROM metaforeas WHERE epitheto = ?", new String[]{epitheto});
+        if(cursor.getCount() > 0){
+            long result = db.update("metaforeas", contentValues, "epitheto=?", new String[] {epitheto});
+            if(result==-1){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+
+
 
     //-----------------------------DELETE FUNCTIONS----------------------------------------------------
     public Boolean deleteparagogos (String epitheto){
@@ -142,5 +193,19 @@ public class DatabaseAccess {
         }else{
             return false;
         }
+    }
+
+    //-----------------------------SPINNER QUERY----------------------------------------------------
+
+    public ArrayList<String> getsurname(String table){
+        ArrayList <String> list = new ArrayList<String>();
+        Cursor cursor = db.rawQuery("SELECT * FROM '"+table+"'", null);
+        if(cursor.getCount() > 0){
+            while (cursor.moveToNext()){
+                String parepitheto = cursor.getString(cursor.getColumnIndex("epitheto"));
+                list.add(parepitheto);
+            }
+        }
+        return list;
     }
 }

@@ -19,19 +19,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class UpdateParagogos extends AppCompatActivity {
+public class UpdateKtinotrofos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_paragogos);
+        setContentView(R.layout.activity_update_ktinotrofos);
+
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
         databaseAccess.open();
-        TextView namepar_txt = (TextView) findViewById(R.id.namepar_txt);
-        TextView surnamepar_txt = (TextView) findViewById(R.id.surnamepar_txt);
-        namepar_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
-        surnamepar_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
-        ArrayList<String> listpar = databaseAccess.getsurname("paragogos");
+        TextView namektin_txt = (TextView) findViewById(R.id.namektin_txt);
+        TextView surnamektin_txt = (TextView) findViewById(R.id.surnamektin_txt);
+        namektin_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        surnamektin_txt.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        ArrayList<String> listpar = databaseAccess.getsurname("ktinotrofos");
         Spinner sp = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout, R.id.txt, listpar);
         sp.setAdapter(adapter);
@@ -42,10 +43,10 @@ public class UpdateParagogos extends AppCompatActivity {
 
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
                 databaseAccess.open();
-                Cursor res = databaseAccess.getDataSurname("paragogos", epitheto);
+                Cursor res = databaseAccess.getDataSurname("ktinotrofos", epitheto);
                 while(res.moveToNext()){
-                    namepar_txt.setText(res.getString(1));
-                    surnamepar_txt.setText(res.getString(2));
+                    namektin_txt.setText(res.getString(1));
+                    surnamektin_txt.setText(res.getString(2));
                 }
             }
 
@@ -59,21 +60,17 @@ public class UpdateParagogos extends AppCompatActivity {
         update_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = namepar_txt.getText().toString();
-                String surname = surnamepar_txt.getText().toString();
-                Boolean checkinsertdata = databaseAccess.updateparagogos(name, surname);
+                String name = namektin_txt.getText().toString();
+                String surname = surnamektin_txt.getText().toString();
+                Boolean checkinsertdata = databaseAccess.updatektinotrofos(name, surname);
                 if(checkinsertdata==true){
-                    Toast.makeText(UpdateParagogos.this, "ΚΑΤΑΧΩΡΗΘΗΚΕ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateKtinotrofos.this, "ΚΑΤΑΧΩΡΗΘΗΚΕ", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(UpdateParagogos.this, "Η ΚΑΤΑΧΩΡΗΣΗ ΑΠΕΤΥΧΕ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateKtinotrofos.this, "Η ΚΑΤΑΧΩΡΗΣΗ ΑΠΕΤΥΧΕ", Toast.LENGTH_LONG).show();
                 }
-                //Toast.makeText(UpdateParagogos.this, name + surname, Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
-
 
     //-----------------------Menu Call---------------------
     @Override
@@ -88,19 +85,19 @@ public class UpdateParagogos extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.menu_home){
-            Intent intent = new Intent(UpdateParagogos.this, MainActivity.class);
+            Intent intent = new Intent(UpdateKtinotrofos.this, MainActivity.class);
             startActivity(intent);
         }else
         if(id == R.id.menu_paragogos) {
-            Intent intent = new Intent(UpdateParagogos.this, Paragogos.class);
+            Intent intent = new Intent(UpdateKtinotrofos.this, Paragogos.class);
             startActivity(intent);
         }else
         if(id== R.id.menu_ktinotrofos){
-            Intent intent = new Intent(UpdateParagogos.this, Ktinotrofos.class);
+            Intent intent = new Intent(UpdateKtinotrofos.this, Ktinotrofos.class);
             startActivity(intent);
         }else
         if(id==R.id.menu_metaforeas){
-            Intent intent = new Intent(UpdateParagogos.this, Metaforeas.class);
+            Intent intent = new Intent(UpdateKtinotrofos.this, Metaforeas.class);
             startActivity(intent);
         }
 

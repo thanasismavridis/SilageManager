@@ -32,8 +32,17 @@ public class Paragogos extends AppCompatActivity {
             }
         });
 
-        Button delete_btn = (Button) findViewById(R.id.diagrafi_btn);
-        delete_btn.setOnClickListener(new View.OnClickListener() {
+        Button enimerosi_btn = (Button) findViewById(R.id.enimerosi_btn);
+        enimerosi_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Paragogos.this, UpdateParagogos.class);
+                startActivity(intent);
+            }
+        });
+
+        Button diagrafi_btn = (Button) findViewById(R.id.diagrafi_btn);
+        diagrafi_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentdelete = new Intent(Paragogos.this, DeleteParagogos.class);
@@ -49,7 +58,7 @@ public class Paragogos extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
                 databaseAccess.open();
-                Cursor res = databaseAccess.getDataParagogos();
+                Cursor res = databaseAccess.getData("paragogos");
                 if(res.getCount()==0){
                     Toast.makeText(Paragogos.this, "ΚΑΜΙΑ ΕΓΓΡΑΦΗ", Toast.LENGTH_LONG).show();
                     return;
@@ -102,6 +111,10 @@ public class Paragogos extends AppCompatActivity {
         }else
         if(id== R.id.menu_ktinotrofos){
             Intent intent = new Intent(Paragogos.this, Ktinotrofos.class);
+            startActivity(intent);
+        }else
+        if(id==R.id.menu_metaforeas){
+            Intent intent = new Intent(Paragogos.this, Metaforeas.class);
             startActivity(intent);
         }
 

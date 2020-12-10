@@ -31,6 +31,15 @@ public class Metaforeas extends AppCompatActivity {
             }
         });
 
+        Button enimerosi_btn = (Button) findViewById(R.id.enimerosi_btn);
+        enimerosi_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Metaforeas.this, UpdateMetaforeas.class);
+                startActivity(intent);
+            }
+        });
+
         Button diagrafi_btn = (Button) findViewById(R.id.diagrafi_btn);
         diagrafi_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +56,7 @@ public class Metaforeas extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
                 databaseAccess.open();
-                Cursor res = databaseAccess.getDataMetaforeas();
+                Cursor res = databaseAccess.getData("metaforeas");
                 if(res.getCount()==0){
                     Toast.makeText(Metaforeas.this, "ΚΑΜΙΑ ΕΓΓΡΑΦΗ", Toast.LENGTH_LONG).show();
                     return;
