@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -49,9 +48,8 @@ public class Metaforeas extends AppCompatActivity {
             }
         });
 
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-
-        textView2.setOnClickListener(new View.OnClickListener() {
+        Button provoli_btn = (Button) findViewById(R.id.provoli_btn);
+        provoli_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
@@ -68,14 +66,20 @@ public class Metaforeas extends AppCompatActivity {
                     buffer.append("Αριθμός Κυκλογορίας: " +res.getString(2)+"\n\n\n\n");
                 }
 
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(Metaforeas.this);
                 builder.setCancelable(true);
                 builder.setTitle("ΜΕΤΑΦΟΡΕΙΣ");
                 builder.setMessage(buffer.toString());
                 builder.show();
                 databaseAccess.close();
+
             }
         });
+
+
+
+
     }
 
 

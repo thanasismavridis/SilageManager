@@ -39,8 +39,8 @@ public class DatabaseAccess {
 
     //-----------------------------VIEW FUNCTIONS------------------------------------------------------
 
-    public Cursor getData(String ontotita){
-        Cursor cursor = db.rawQuery("SELECT * FROM '"+ontotita+"'", null);
+    public Cursor getData(String table){
+        Cursor cursor = db.rawQuery("SELECT * FROM '"+table+"'", null);
         return cursor;
     }
 
@@ -49,9 +49,22 @@ public class DatabaseAccess {
         return cursor;
     }
 
-
-
-
+    public Cursor getZigismaData(){
+        Cursor cursor = db.rawQuery("SELECT\n" +
+                "\t\timerominia,\n" +
+                "\t\teidos,\n" +
+                "\t\ttonoi,\n" +
+                "\t\tparagogos.epitheto as paragogos_epitheto,\n" +
+                "\t\tparagogos.onoma as paragogos_onoma,\n" +
+                "\t\tmetaforeas.epitheto as metaforeas_epitheto,\n" +
+                "\t\tmetaforeas.onoma as metaforeas_onoma,\n" +
+                "\t\tmetaforeas.ar_kikloforias as ar_kikloforias\n" +
+                "FROM\n" +
+                "\tzigisma\n" +
+                "INNER JOIN paragogos ON paragogos.id_paragogos = zigisma.id_paragogos\n" +
+                "INNER JOIN metaforeas ON metaforeas.ar_kikloforias = zigisma.ar_kikloforias",null);
+        return cursor;
+    }
 
     //-----------------------------INSERT FUNCTIONS----------------------------------------------------
 
@@ -85,6 +98,22 @@ public class DatabaseAccess {
         contentValues.put("onoma", onoma);
         contentValues.put("epitheto", epitheto);
         long result = db.insert("ktinotrofos", null, contentValues);
+        if(result==-1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public Boolean insertzigisma(Long tonoi, String eidos,  int id_paragogos, String ar_kikloforias, String imerominia){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tonoi", tonoi);
+        contentValues.put("eidos", eidos);
+        contentValues.put("id_paragogos", id_paragogos);
+        contentValues.put("ar_kikloforias", ar_kikloforias);
+        contentValues.put("imerominia", imerominia);
+
+        long result = db.insert("zigisma", null, contentValues);
         if(result==-1){
             return false;
         }else{
@@ -208,4 +237,6 @@ public class DatabaseAccess {
         }
         return list;
     }
+
+
 }

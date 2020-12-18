@@ -49,9 +49,9 @@ public class Ktinotrofos extends AppCompatActivity {
             }
         });
 
-        textView2 = (TextView) findViewById(R.id.textView2);
+        Button provoli_btn = (Button) findViewById(R.id.provoli_btn);
 
-        textView2.setOnClickListener(new View.OnClickListener() {
+        provoli_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());

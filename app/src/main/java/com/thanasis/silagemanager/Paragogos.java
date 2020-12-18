@@ -23,6 +23,10 @@ public class Paragogos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paragogos);
 
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+        databaseAccess.open();
+
+
         Button kataxorisi_btn = (Button) findViewById(R.id.kataxorisi_btn);
         kataxorisi_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +55,9 @@ public class Paragogos extends AppCompatActivity {
         });
 
 
-        textView2 = (TextView) findViewById(R.id.textView2);
 
-        textView2.setOnClickListener(new View.OnClickListener() {
+        Button provoli_btn = (Button) findViewById(R.id.provoli_btn);
+        provoli_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
