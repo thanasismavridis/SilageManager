@@ -52,6 +52,8 @@ public class InsertParagogos extends AppCompatActivity {
 
                     databaseAccess.close();
                 }
+                namepar_txt.setText("");
+                surnamepar_txt.setText("");
             }
         });
     }

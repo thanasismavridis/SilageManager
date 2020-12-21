@@ -63,7 +63,7 @@ public class Metaforeas extends AppCompatActivity {
                 while(res.moveToNext()){
                     buffer.append("Όνομα: " +res.getString(0)+"\n");
                     buffer.append("Επίθετο: " +res.getString(1)+"\n");
-                    buffer.append("Αριθμός Κυκλογορίας: " +res.getString(2)+"\n\n\n\n");
+                    buffer.append("Αριθμός Κυκλοφορίας: " +res.getString(2)+"\n\n\n\n");
                 }
 
 

@@ -51,6 +51,8 @@ public class InsertKtinotrofos extends AppCompatActivity {
 
                     databaseAccess.close();
                 }
+                namektin_txt.setText("");
+                surnamektin_txt.setText("");
             }
         });
     }

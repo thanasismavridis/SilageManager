@@ -82,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Η ΚΑΤΑΧΩΡΗΣΗ ΑΠΕΤΥΧΕ", Toast.LENGTH_LONG).show();
                     }
                 }
+
+                tonoi_txt.setText("");
+                eidos_txt.setText("");
+                ar_kikloforias_txt.setText("");
+
             }
         });
 

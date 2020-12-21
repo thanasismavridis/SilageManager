@@ -53,6 +53,9 @@ public class InsertMetaforeas extends AppCompatActivity {
 
                     databaseAccess.close();
                 }
+                namemet_txt.setText("");
+                surnamemet_txt.setText("");
+                arkikloforias_txt.setText("");
             }
         });
     }
