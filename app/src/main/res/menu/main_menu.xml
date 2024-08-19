@@ -18,9 +18,14 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/menu_ktinotrofos"
-        android:title="Κτηνοτρόφος"
+        android:id="@+id/menu_ensiroma"
+        android:title="Ενσίρωμα"
         app:showAsAction="never"/>
+
+<!--    <item-->
+<!--        android:id="@+id/menu_ktinotrofos"-->
+<!--        android:title="Κτηνοτρόφος"-->
+<!--        app:showAsAction="never"/>-->
 
 
 </menu>

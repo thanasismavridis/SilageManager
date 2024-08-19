@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Apotelesmata.Paragogos.ParagogosResultTypeFragment"
+    android:background="@color/white">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Αποτελέσματα Παραγωγού"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Επιλέξτε παραγωγό:"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+        <TextView
+            android:id="@+id/subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Φίλτρα:"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner" />
+
+        <Button
+            android:id="@+id/general_btn"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="Γενικά αποτελέσματα"
+            android:textAllCaps="false"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitle2"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/ensiroma_btn"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="Κατά ενσίρωμα"
+            android:textAllCaps="false"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/general_btn"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/fortio_btn"-->
+<!--            android:layout_width="220dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Κατά φορτίο"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/ensiroma_btn"-->
+<!--            app:layout_constraintStart_toStartOf="parent"/>-->
+
+        <Button
+            android:id="@+id/autokinito_btn"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="Κατά αυτοκίνητο"
+            android:textAllCaps="false"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ensiroma_btn"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/date_btn"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="Κατά Ημερομηνία"
+            android:textAllCaps="false"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/autokinito_btn"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

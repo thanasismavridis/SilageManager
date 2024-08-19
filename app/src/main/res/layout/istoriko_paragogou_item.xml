@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C3C3C3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp">
+
+    <TextView
+        android:id="@+id/zigisma_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*** ΖΥΓΙΣΜΑ ***"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/date_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ημερομηνία: "
+        android:textSize="16dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/zigisma_txt"/>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/date_txt"
+        app:layout_constraintTop_toTopOf="@id/date_txt"
+        app:layout_constraintBottom_toBottomOf="@id/date_txt"/>
+
+
+    <TextView
+        android:id="@+id/id_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Αρ. Ζυγίσματος: "
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@id/id"
+        app:layout_constraintTop_toBottomOf="@id/zigisma_txt"/>
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/id_txt"
+        app:layout_constraintBottom_toBottomOf="@id/id_txt"/>
+
+    <TextView
+        android:id="@+id/ensiroma_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ενσύρωμα: "
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_txt"/>
+
+    <TextView
+        android:id="@+id/ensiroma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/ensiroma_txt"
+        app:layout_constraintTop_toTopOf="@id/ensiroma_txt"
+        app:layout_constraintBottom_toBottomOf="@id/ensiroma_txt"/>
+
+
+    <TextView
+        android:id="@+id/autokinito_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Αυτοκίνητο: "
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@id/autokinito"
+        app:layout_constraintTop_toBottomOf="@id/date_txt"/>
+
+    <TextView
+        android:id="@+id/autokinito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/autokinito_txt"
+        app:layout_constraintBottom_toBottomOf="@id/autokinito_txt"/>
+
+
+    <TextView
+        android:id="@+id/ofelimo_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Καθαρό: "
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ensiroma_txt"/>
+
+    <TextView
+        android:id="@+id/ofelimo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/ofelimo_txt"
+        app:layout_constraintTop_toTopOf="@id/ofelimo_txt"/>
+
+    <TextView
+        android:id="@+id/apovaro_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Απόβαρο: "
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ofelimo_txt"/>
+
+    <TextView
+        android:id="@+id/apovaro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/apovaro_txt"
+        app:layout_constraintTop_toTopOf="@id/apovaro_txt"/>
+
+
+
+    <TextView
+        android:id="@+id/mikto_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Μικτό: "
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/apovaro_txt"/>
+
+    <TextView
+        android:id="@+id/mikto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/mikto_txt"
+        app:layout_constraintTop_toTopOf="@id/mikto_txt"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
